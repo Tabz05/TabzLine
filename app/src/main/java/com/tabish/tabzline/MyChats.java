@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class MyChats extends AppCompatActivity {
 
-    private  frbAuth;
+    private FirebaseAuth frbAuth;
     private FirebaseUser currentUser;
     private FirebaseFirestore db;
 

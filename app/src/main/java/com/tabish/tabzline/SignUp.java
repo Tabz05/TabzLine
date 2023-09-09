@@ -33,30 +33,30 @@ import java.util.Map;
 
 public class SignUp extends AppCompatActivity {
 
-    FirebaseAuth frbAuth;
-    FirebaseUser currentUser;
-    FirebaseFirestore db;
+    private FirebaseAuth frbAuth;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore db;
 
-    String username;
-    String email;
-    String pass;
+    private String username;
+    private String email;
+    private String pass;
 
-    EditText usernameSignUp;
-    EditText emailSignUp;
-    EditText passSignUp;
-    TextView textsignup;
+    private EditText usernameSignUp;
+    private EditText emailSignUp;
+    private EditText passSignUp;
+    private TextView textsignup;
 
-    Button signUpButton;
+    private Button signUpButton;
 
-    CountDownTimer countDownTimer;
+    private CountDownTimer countDownTimer;
 
-    String existing_username;
+    private String existing_username;
 
-    ArrayList<String> usersList;
+    private ArrayList<String> usersList;
 
-    int found=0;
+    private int found=0;
 
-    public void sendEmailVerification() {
+    private void sendEmailVerification() {
 
         FirebaseUser user = frbAuth.getCurrentUser();
         user.sendEmailVerification()
@@ -77,7 +77,8 @@ public class SignUp extends AppCompatActivity {
                 });
     }
 
-    public void createUser(){
+    private void createUser()
+    {
 
         usersList= new ArrayList<String>();
         found=0;
@@ -111,7 +112,6 @@ public class SignUp extends AppCompatActivity {
                                             @Override
                                             public void onComplete(@NonNull Task<AuthResult> task) {
                                                 if (task.isSuccessful()) {
-                                                    // Sign in success, update UI with the signed-in user's information
 
                                                     sendEmailVerification();
 

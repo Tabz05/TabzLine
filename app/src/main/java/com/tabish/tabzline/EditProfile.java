@@ -43,36 +43,27 @@ import java.util.Map;
 
 public class EditProfile extends AppCompatActivity {
 
-    FirebaseAuth frbAuth;
-    FirebaseUser currentUser;
-    FirebaseFirestore db;
+    private FirebaseAuth frbAuth;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore db;
 
-    public Uri selectedImage;
+    private Uri selectedImage;
 
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
-    EditText newUsername;
-    Button removePic;
+    private Button removePic;
 
-    Button chooseProfilePicEdit;
-    Button submitEditProfile;
+    private Button chooseProfilePicEdit;
+    private Button submitEditProfile;
 
-    ImageView imageView3;
+    private ImageView imageView3;
 
-    int found=0;
+    private boolean hasProfilePic;
 
-    boolean hasProfilePic;
+    private String profilePicUri;
 
-    String profilePicUri;
-
-    String existing_username;
-
-    String currUsername;
-
-    String new_username;
-
-    public void getPhoto() {
+    private void getPhoto() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         someActivityResultLauncher.launch(intent);
     }
@@ -234,18 +225,15 @@ public class EditProfile extends AppCompatActivity {
         });
     }*/
 
-    public void updateImage()
+    private void updateImage()
     {
         ProgressDialog progressDialog
                 = new ProgressDialog(this);
         progressDialog.setTitle("Uploading...");
         progressDialog.show();
 
-        // Defining the child of storageReference
         StorageReference ref = storageReference.child("users").child(currentUser.getUid()).child("profilePic");
 
-        // adding listeners on upload
-        // or failure of image
         ref.putFile(selectedImage).addOnSuccessListener(
                 new OnSuccessListener<UploadTask.TaskSnapshot>() {
 
@@ -267,8 +255,6 @@ public class EditProfile extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
 
-                                                // Image uploaded successfully
-                                                // Dismiss dialog
                                                 progressDialog.dismiss();
                                                 Toast.makeText(EditProfile.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
 
@@ -307,8 +293,6 @@ public class EditProfile extends AppCompatActivity {
                 .addOnProgressListener(
                         new OnProgressListener<UploadTask.TaskSnapshot>() {
 
-                            // Progress Listener for loading
-                            // percentage on the dialog box
                             @Override
                             public void onProgress(
                                     UploadTask.TaskSnapshot taskSnapshot)
@@ -392,7 +376,7 @@ public class EditProfile extends AppCompatActivity {
 
     }
 
-    public boolean isNetworkAvailable() { // to check if connected to internet
+    private boolean isNetworkAvailable() {
         boolean connected = false;
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||

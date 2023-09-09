@@ -34,25 +34,23 @@ import com.google.firebase.storage.StorageReference;
 
 public class MyProfile extends AppCompatActivity {
 
-    FirebaseAuth frbAuth;
-    FirebaseUser currentUser;
-    FirebaseFirestore db;
+    private FirebaseAuth frbAuth;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore db;
 
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
 
-    TextView myProfileText;
-    ImageView myProfilePicture;
+    private TextView myProfileText;
+    private ImageView myProfilePicture;
 
-    LinearLayout linearLayout;
+    private LinearLayout linearLayout;
 
-    long i;
+    private boolean hasProfilePic;
 
-    boolean hasProfilePic;
+    private String profilePicUri;
 
-    String profilePicUri;
-
-    public void showProfilePic()
+    private void showProfilePic()
     {
         StorageReference ref = storageReference.child("users").child(currentUser.getUid()).child("image");
         ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -70,7 +68,7 @@ public class MyProfile extends AppCompatActivity {
         });
     }
 
-    public boolean isNetworkAvailable() { // to check if connected to internet
+    private boolean isNetworkAvailable() {
         boolean connected = false;
         ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||

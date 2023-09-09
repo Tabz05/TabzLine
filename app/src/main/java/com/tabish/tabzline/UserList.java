@@ -57,9 +57,6 @@ public class UserList extends AppCompatActivity {
     private ArrayList<String> allUsernameList;
     private ArrayList<String> allUserIdList;
 
-    private String user_to_chat_id;
-    private String user_to_chat_username;
-
     private String single_chat_id;
 
     private int user_id_compare;
@@ -484,9 +481,6 @@ public class UserList extends AppCompatActivity {
                                 DocumentSnapshot document = task.getResult();
                                 if (document.exists())
                                 {
-                                    user_to_chat_id=(String) allUserIdList.get(i);
-                                    user_to_chat_username =(String) allUsernameList.get(i);
-
                                     Intent goToChat = new Intent (getApplicationContext(),ChatActivity.class);
 
                                     goToChat.putExtra("chat_id",single_chat_id);

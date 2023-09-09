@@ -20,13 +20,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignIn extends AppCompatActivity {
 
-    EditText emailSignIn;
-    EditText passSignIn;
-    TextView forgotPassword;
+    private EditText emailSignIn;
+    private EditText passSignIn;
+    private TextView forgotPassword;
 
-    FirebaseAuth frbAuth;
-    FirebaseUser currentUser;
-    FirebaseFirestore db;
+    private FirebaseAuth frbAuth;
+    private FirebaseUser currentUser;
+    private FirebaseFirestore db;
 
     public void loginUser() {
         String email = emailSignIn.getText().toString();
@@ -36,11 +36,10 @@ public class SignIn extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
+
                             Intent goToMainActivity = new Intent (getApplicationContext(),MainActivity.class);
                             startActivity(goToMainActivity);
                         } else {
-                            // If sign in fails, display a message to the user.
 
                             Toast.makeText(SignIn.this,"Sign In Unsuccessful, inavlid credentials",Toast.LENGTH_SHORT).show();
                         }

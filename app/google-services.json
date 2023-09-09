@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "946037366241",
+    "project_id": "tabzline",
+    "storage_bucket": "tabzline.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:946037366241:android:03e9ef121d49538775c6a0",
+        "android_client_info": {
+          "package_name": "com.tabish.tabzline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "946037366241-6tukia77nhml0v2s419tsqmcsnqttsr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-JE9op6fpIv8a1ZpGvZChwKC3tWSJRGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "946037366241-6tukia77nhml0v2s419tsqmcsnqttsr7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
